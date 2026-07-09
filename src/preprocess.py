@@ -12,7 +12,25 @@ def carregar_imagem(caminho):
     return imagem
 
 def redimensionar(imagem):
-    pass
+    if imagem is None:
+        print("Imagem não encontrada")
+        return None
+    #receber a imagem
+    altura, largura, canais = imagem.shape
+
+    if altura > 224 or largura > 224:
+        interpolacao = cv.INTER_AREA
+#se a imagem for maior que 224 x 224 usar INTER_AREA
+    elif altura < 224  or largura < 224:
+        interpolacao = cv.INTER_LINEAR
+    #se for menor usar INTER_LINEAR
+    else:
+        interpolacao = cv.INTER_LINEAR
+#se for menor usar INTER_LINEAR
+    imagem_redimensionada = cv.resize(imagem, (224, 224),interpolation = interpolacao)
+    return imagem_redimensionada
+#redimensionar para 224x224
+#retornar a imagem redimensionada
 
 
 def normalizar(imagem):
@@ -20,10 +38,13 @@ def normalizar(imagem):
 
 
 
-imagem = carregar_imagem('datasets/yes/Y1.jpg')
+imagem = carregar_imagem('datasets/yes/Y2.jpg')
+altura, largura , canais = imagem.shape
+
 print(imagem)
-
-
+print(f"Altura: ", altura)
+print(f"largura: ", largura)
+print(f"canais: ", canais)
 
 
 
