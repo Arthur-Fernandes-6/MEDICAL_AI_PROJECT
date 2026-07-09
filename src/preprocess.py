@@ -11,6 +11,7 @@ def carregar_imagem(caminho):
 
     return imagem
 
+
 def redimensionar(imagem):
     if imagem is None:
         print("Imagem não encontrada")
@@ -33,13 +34,19 @@ def redimensionar(imagem):
 #retornar a imagem redimensionada
 
 
+
 def normalizar(imagem):
     if imagem is None:
         print("Imagem não encontrada")
         return None
     #normalizar a imagem para o intervalo [0, 1]
+    imagem = imagem.astype(np.float32)
+    #converter a imagem para float32 
+    #tensorflow trabalha melhor com float32
     imagem_normalizada = imagem / 255.0
     return imagem_normalizada
+
+
 
 
 
