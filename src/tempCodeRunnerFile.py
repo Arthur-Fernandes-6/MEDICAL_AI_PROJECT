@@ -1,0 +1,1 @@
+cv.imshow('Gohan', img)
