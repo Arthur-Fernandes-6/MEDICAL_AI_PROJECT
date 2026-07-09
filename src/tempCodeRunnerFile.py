@@ -1,1 +1,1 @@
-cv.imshow('Gohan', img)
+datasets/yes/Y1.jpg
