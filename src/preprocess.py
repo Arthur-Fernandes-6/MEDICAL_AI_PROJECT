@@ -46,5 +46,4 @@ def normalizar(imagem):
     imagem_normalizada = imagem / 255.0
     return imagem_normalizada
 
- 
 
