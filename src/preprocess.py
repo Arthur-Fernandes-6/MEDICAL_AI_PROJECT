@@ -1,4 +1,4 @@
-import cv2 as cv
+import cv2 as cv#servira para manipular as imagens
 import numpy as np #Representará a imagem como uma matriz.
 import os #Servirá para trabalhar com caminhos de arquivos.
 
