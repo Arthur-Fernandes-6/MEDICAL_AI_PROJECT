@@ -46,19 +46,5 @@ def normalizar(imagem):
     imagem_normalizada = imagem / 255.0
     return imagem_normalizada
 
+ 
 
-
-
-
-
-#imagem = carregar_imagem('datasets/yes/Y6.jpg')
-#altura, largura , canais = imagem.shape
-#print(imagem)
-#print(imagem.shape)
-#print(f"Altura: ", altura)
-#print(f"largura: ", largura)
-#print(f"canais: ", canais)
-#img = cv.imread('datasets/Son_Gohan.jpeg')  vai ler o caminho da imagem 
-#cv.imshow('Gohan', img)
-#cv.waitKey(0)
-#print(img.shape)
