@@ -4,7 +4,7 @@ import os #Servirá para trabalhar com caminhos de arquivos.
 
 def carregar_imagem(caminho):
     imagem = cv.imread(caminho)
-
+#recebe o caminho da imagem 
     if imagem is None:
         print("Imagem não encontrada!")
         return None
