@@ -12,7 +12,7 @@ x_train, x_test, y_train, y_test = train_test_split(
     y,
     # variavel que armazena a lista com os rotulos
     test_size= 0.2,
-    # 30% de imagens separados para treino 
+    # 20% de imagens separados para teste
     random_state= 42, 
     stratify=y
 )
