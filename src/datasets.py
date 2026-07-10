@@ -1,6 +1,6 @@
 import os
 from preprocess import *
-
+import numpy as np
 # função responsavel por carregar todo o dataset
 def carregar_dataset(dataset_path):
     x = []
@@ -42,4 +42,12 @@ def carregar_dataset(dataset_path):
         x.append(imagem)
         y.append(0)
         # rotulo para imagens que não tem tumor
-    return x, y
+
+
+    x_array = np.array(x, dtype=np.float32)
+    # transforma a lista de imagens em um array numpy
+    #garante que as imagens sejam do tipo float32, para compatibilidade com o TensorFlow
+    y_array = np.array(y, dtype=np.float32)
+    #garante que os rótulos sejam do tipo float32, para compatibilidade com o TensorFlow
+    # transforma a lista de rótulos em um array numpy
+    return x_array, y_array 
