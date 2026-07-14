@@ -1,6 +1,6 @@
 from dataset import carregar_dataset
 from sklearn.model_selection import train_test_split
-
+from model import criar_modelo
 
 #carregar o dataset
 x,y = carregar_dataset("datasets")
@@ -18,15 +18,23 @@ x_train, x_test, y_train, y_test = train_test_split(
 )
 
 #criar o modelo
+modelo = criar_modelo()
+modelo.summary()# mostra cada camada, formato de saída, número de parâmetros
+
+
 #treinar
+historico = modelo.fit(
+                x_train,
+                y_train,
+                epochs = 15,
+                batch_size = 32,
+                validation_data = (x_test, y_test)
+                )
+
 #avaliar
+loss, accuracy = modelo.evaluate(x_test,y_test)
+print(f"Loss final: {loss:.4f}")
+print(f"Acuraccy : {accuracy*100:.2f}%")
+
 #salvar o modelo
-print("Formato de X treino:", x_train.shape)
-print("Formato de X teste:", x_test.shape)
-
-print("Formato de y treino:", y_train.shape)
-print("Formato de y teste:", y_test.shape)
-
-print("Quantidade total:", len(x))
-print("Quantidade de treino:", len(x_train))
-print("Quantidade de teste:", len(x_test))
+modelo.save('models/brain_tumor_cnn.keras')

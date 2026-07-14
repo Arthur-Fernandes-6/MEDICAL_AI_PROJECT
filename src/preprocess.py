@@ -1,6 +1,6 @@
-import cv2 as cv#servira para manipular as imagens
-import numpy as np #Representará a imagem como uma matriz.
-import os #Servirá para trabalhar com caminhos de arquivos.
+import cv2 as cv
+import numpy as np 
+import os 
 
 def carregar_imagem(caminho):
     imagem = cv.imread(caminho)
@@ -45,5 +45,4 @@ def normalizar(imagem):
     #tensorflow trabalha melhor com float32
     imagem_normalizada = imagem / 255.0
     return imagem_normalizada
-
 
