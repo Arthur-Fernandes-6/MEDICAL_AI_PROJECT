@@ -29,7 +29,16 @@ def criar_modelo():
 
         # Analisa as características encontradas
         Dense(128, activation= 'relu'),
-        Dense(1, activation='sigmoid')
+        Dense(1, activation='sigmoid'),
+
     ])
+
+# Ensina a IA a aprender 
+# Mede o erro da IA
+# acompanha o desempenho 
+    modelo.compile(
+        optimizer = "adam",
+        loss = "binary_crossentropy", 
+        metrics =["accuracy"])
 
     return modelo
