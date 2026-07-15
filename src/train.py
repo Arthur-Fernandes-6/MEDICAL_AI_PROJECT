@@ -26,6 +26,7 @@ modelo = criar_modelo()
 modelo.summary()# mostra cada camada, formato de saída, número de parâmetros
 
 # configurar o EarlyStopping
+# monitora a perda de validação e parar o treinamento se não houver melhora por 3 épocas consecutivas
 parada_antecipada = EarlyStopping(
     monitor="val_loss",
     patience=3,
@@ -36,10 +37,10 @@ parada_antecipada = EarlyStopping(
 historico = modelo.fit(
                 x_train,
                 y_train,
-                epochs = 30,
-                batch_size = 32,
-                validation_data = (x_test, y_test),
-                callbacks=[parada_antecipada]
+                epochs = 30,#quantas vezes o modelo vai ver todas as imagens
+                batch_size = 32,#grupo de imagens que serão processadas de uma vez
+                validation_data = (x_test, y_test),#avaliar o modelo com o conjunto de teste
+                callbacks=[parada_antecipada]#para parar o treinamento se não houver melhora na validação
                 )
 
 #avaliar

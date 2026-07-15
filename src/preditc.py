@@ -27,7 +27,7 @@ def prever_imagem(caminho):
     return classificacao, probabilidade
 
 
-resultado = prever_imagem("datasets/no/1 no.jpeg")
+resultado = prever_imagem("datasets/no/No17.jpg")
 
 if resultado is not None:
     classificacao, probabilidade = resultado

@@ -9,11 +9,13 @@ def criar_modelo():
     modelo = keras.Sequential([
         # encontra os padrões
         Conv2D(
-            filters =32, kernel_size = (3, 3), 
+            filters =32, 
+            kernel_size = (3, 3), 
             activation = 'relu', 
             input_shape = (224, 224, 3)
             ),
         MaxPooling2D(pool_size = (2,2)),
+        #Ela divide a imagem em blocos 2 × 2 e mantém apenas o maior valor de cada bloco
         #mantem os padrões mais importantes
 
         # Aprende padrões mais complexos
@@ -41,6 +43,8 @@ def criar_modelo():
     modelo.compile(
         optimizer = "adam",
         loss = "binary_crossentropy", 
-        metrics =["accuracy"])
+        metrics =["accuracy"]
+        )
 
     return modelo
+
