@@ -6,7 +6,7 @@ from preprocess import preprocessar_imagem
 modelo = load_model("models/brain_tumor_cnn.keras")
 
 
-def predict(caminho):
+def prever_imagem(caminho):
     imagem = preprocessar_imagem(caminho)
 
     if imagem is None:
@@ -27,6 +27,10 @@ def predict(caminho):
     return classificacao, probabilidade
 
 
-classificacao, probabilidade = predict("datasets/yes/Y1.jpg")
-print("Resultado: ", classificacao)
-print(f"Probabilidade de tumor: {probabilidade * 100:.2f}%")
+resultado = prever_imagem("datasets/no/1 no.jpeg")
+
+if resultado is not None:
+    classificacao, probabilidade = resultado
+
+    print("Resultado:", classificacao)
+    print(f"Probabilidade de tumor: {probabilidade * 100:.2f}%")
