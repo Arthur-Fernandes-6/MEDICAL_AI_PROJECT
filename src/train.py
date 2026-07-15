@@ -1,7 +1,11 @@
 from dataset import carregar_dataset
 from sklearn.model_selection import train_test_split
 from model import criar_modelo
-
+import matplotlib.pyplot as plt
+from tensorflow.keras.callbacks import EarlyStopping
+import os
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import ConfusionMatrixDisplay
 #carregar o dataset
 x,y = carregar_dataset("datasets")
 
@@ -21,20 +25,81 @@ x_train, x_test, y_train, y_test = train_test_split(
 modelo = criar_modelo()
 modelo.summary()# mostra cada camada, formato de saída, número de parâmetros
 
+# configurar o EarlyStopping
+parada_antecipada = EarlyStopping(
+    monitor="val_loss",
+    patience=3,
+    restore_best_weights=True
+)
 
 #treinar
 historico = modelo.fit(
                 x_train,
                 y_train,
-                epochs = 15,
+                epochs = 30,
                 batch_size = 32,
-                validation_data = (x_test, y_test)
+                validation_data = (x_test, y_test),
+                callbacks=[parada_antecipada]
                 )
 
 #avaliar
 loss, accuracy = modelo.evaluate(x_test,y_test)
+
 print(f"Loss final: {loss:.4f}")
 print(f"Acuraccy : {accuracy*100:.2f}%")
+print(os.getcwd()) 
+
+print(f"Loss final: {loss:.4f}")
+print(f"Accuracy: {accuracy * 100:.2f}%")
+
+# Fazer previsões no conjunto de teste
+probabilidades = modelo.predict(x_test)
+
+# Converter probabilidades em classes
+y_pred = (probabilidades >= 0.5).astype(int)
+y_pred = y_pred.ravel()
+
+# Criar matriz de confusão
+matriz = confusion_matrix(y_test, y_pred)
+
+print("Matriz de confusão:")
+print(matriz)
+
+# Exibir matriz
+visualizacao = ConfusionMatrixDisplay(
+    confusion_matrix=matriz,
+    display_labels=["Sem tumor", "Tumor"]
+)
+
+visualizacao.plot()
+plt.title("Matriz de Confusão")
+plt.show()
+
+# Relatório de classificação
+print(
+    classification_report(
+        y_test,
+        y_pred,
+        target_names=["Sem tumor", "Tumor"]
+    )
+)
 
 #salvar o modelo
 modelo.save('models/brain_tumor_cnn.keras')
+
+
+print(type(plt))
+print(plt)
+plt.plot(historico.history["accuracy"], label="Treino")
+plt.plot(historico.history["val_accuracy"], label="Validação")
+plt.xlabel("Épocas")
+plt.ylabel("Acurácia")
+plt.legend()
+plt.show()
+
+plt.plot(historico.history["loss"], label="Treino")
+plt.plot(historico.history["val_loss"], label="Validação")
+plt.xlabel("Épocas")
+plt.ylabel("Loss")
+plt.legend()
+plt.show()

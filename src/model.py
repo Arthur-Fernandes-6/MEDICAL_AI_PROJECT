@@ -3,6 +3,7 @@ from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dropout
 
 def criar_modelo():
     modelo = keras.Sequential([
@@ -29,6 +30,7 @@ def criar_modelo():
 
         # Analisa as características encontradas
         Dense(128, activation= 'relu'),
+        Dropout(0.5),
         Dense(1, activation='sigmoid'),
 
     ])

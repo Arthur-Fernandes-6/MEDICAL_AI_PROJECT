@@ -46,3 +46,11 @@ def normalizar(imagem):
     imagem_normalizada = imagem / 255.0
     return imagem_normalizada
 
+
+def preprocessar_imagem(caminho):
+    imagem = carregar_imagem(caminho)
+    if imagem is None:
+        return None
+    imagem = redimensionar(imagem)
+    imagem = normalizar(imagem)
+    return imagem
