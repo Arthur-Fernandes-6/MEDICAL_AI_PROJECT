@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroScan AI - Detecção de Tumor Cerebral</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Folha de Estilos Principal -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js para Curvas de Aprendizado -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation / Header -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-brain-circuit"></i>
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>NeuroScan <span class="accent-text">AI</span></h1>
+                    <p>Classificação Avançada de Tumor Cerebral</p>
+                </div>
+            </div>
+            <div class="header-status">
+                <div id="status-badge" class="status-badge checking">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Verificando Servidor...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Layout -->
+        <main class="app-content">
+            <!-- Left Column: Inputs & Specs -->
+            <section class="content-left">
+                <!-- Upload Panel -->
+                <div class="glass-panel upload-panel">
+                    <h2 class="panel-title"><i class="fa-solid fa-cloud-arrow-up"></i> Carregar Ressonância (MRI)</h2>
+                    <p class="panel-subtitle">Arraste a imagem do exame ou clique para selecionar do seu computador</p>
+                    
+                    <div id="drop-zone" class="drop-zone">
+                        <input type="file" id="file-input" accept="image/*" class="file-input">
+                        <div class="drop-zone-content">
+                            <i class="fa-solid fa-file-medical-solid fa-circle-h"></i>
+                            <div class="upload-icon-wrapper">
+                                <i class="fa-solid fa-file-image upload-icon"></i>
+                            </div>
+                            <span class="upload-text">Arraste e solte o exame aqui</span>
+                            <span class="upload-or">ou</span>
+                            <button class="btn btn-secondary" id="browse-btn">Selecionar Arquivo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Gallery Panel -->
+                <div class="glass-panel gallery-panel">
+                    <h3 class="panel-title-sm"><i class="fa-solid fa-images"></i> Teste Rápido (Amostras do Dataset)</h3>
+                    <p class="panel-subtitle-sm">Clique em um dos exames reais abaixo para testar instantaneamente:</p>
+                    
+                    <div id="samples-gallery" class="samples-gallery">
+                        <!-- Skeletons carregados dinamicamente via JS -->
+                        <div class="sample-skeleton"></div>
+                        <div class="sample-skeleton"></div>
+                        <div class="sample-skeleton"></div>
+                        <div class="sample-skeleton"></div>
+                    </div>
+                </div>
+
+                <!-- Model Specs Panel -->
+                <div class="glass-panel specs-panel">
+                    <h3 class="panel-title-sm"><i class="fa-solid fa-sliders"></i> Ficha Técnica do Modelo CNN</h3>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-card">
+                            <span class="spec-label">Acurácia Geral</span>
+                            <span class="spec-value text-emerald">95.12%</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Loss de Validação</span>
+                            <span class="spec-value text-indigo">0.1482</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-layers">
+                        <span class="spec-section-title">Estrutura da Rede Neural</span>
+                        <ul class="layers-list">
+                            <li><span class="layer-badge conv">Conv2D</span> 32 filtros, Kernel 3x3, Relu</li>
+                            <li><span class="layer-badge pool">MaxPooling2D</span> Redução espacial 2x2</li>
+                            <li><span class="layer-badge conv">Conv2D</span> 64 filtros, Kernel 3x3, Relu</li>
+                            <li><span class="layer-badge pool">MaxPooling2D</span> Redução espacial 2x2</li>
+                            <li><span class="layer-badge flatten">Flatten</span> Vetorização dos padrões</li>
+                            <li><span class="layer-badge dense">Dense</span> 128 neurônios, Relu, Dropout (50%)</li>
+                            <li><span class="layer-badge output">Dense (Sigmoid)</span> Saída Binária (0 a 1)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Results & Reports -->
+            <section class="content-right">
+                <!-- Main Results Display -->
+                <div class="glass-panel results-panel" id="results-panel">
+                    <div class="panel-header-action">
+                        <h2 class="panel-title"><i class="fa-solid fa-square-poll-vertical"></i> Resultado do Diagnóstico</h2>
+                        <span id="simulation-warning" class="badge-warning hide"><i class="fa-solid fa-bolt"></i> Simulado</span>
+                    </div>
+
+                    <!-- State 1: Awaiting Image -->
+                    <div id="result-state-empty" class="result-state active">
+                        <div class="empty-state-content">
+                            <i class="fa-solid fa-microscope pulse-icon"></i>
+                            <h3>Aguardando Carregamento</h3>
+                            <p>Envie um arquivo de ressonância magnética (MRI) na seção ao lado para iniciar a análise computacional.</p>
+                        </div>
+                    </div>
+
+                    <!-- State 2: Analyzing (Spinner) -->
+                    <div id="result-state-loading" class="result-state">
+                        <div class="loading-state-content">
+                            <div class="spinner-container">
+                                <div class="scanner-line"></div>
+                                <i class="fa-solid fa-brain loading-brain"></i>
+                            </div>
+                            <h3>Analisando MRI...</h3>
+                            <p>Processando imagens, normalizando para 224x224 e executando inferência no modelo convolucional.</p>
+                        </div>
+                    </div>
+
+                    <!-- State 3: Diagnosis Displayed -->
+                    <div id="result-state-success" class="result-state">
+                        <div class="success-layout">
+                            <!-- Image Display & Scanning Overlay -->
+                            <div class="mri-preview-container">
+                                <img id="preview-image" src="" alt="Exame MRI analisado">
+                                <div class="mri-overlay-grid"></div>
+                                <div class="laser-scanner"></div>
+                            </div>
+
+                            <!-- Analysis Details -->
+                            <div class="analysis-details">
+                                <div class="metrics-header">
+                                    <span class="label">CLASSIFICAÇÃO DO MODELO</span>
+                                    <div id="classification-badge" class="classification-badge">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                        <span id="classification-text">Carregando...</span>
+                                    </div>
+                                </div>
+
+                                <div class="confidence-section">
+                                    <div class="confidence-labels">
+                                        <span class="label">Nível de Confiança</span>
+                                        <span id="confidence-percentage" class="confidence-val">0.00%</span>
+                                    </div>
+                                    <div class="confidence-bar-bg">
+                                        <div id="confidence-bar-fill" class="confidence-bar-fill"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Clinician Report -->
+                                <div class="clinical-report">
+                                    <h4><i class="fa-solid fa-file-waveform"></i> Relatório Médico Preliminar</h4>
+                                    
+                                    <div class="report-metadata">
+                                        <div><strong>ID do Exame:</strong> <span id="report-exam-id">#94827-AX</span></div>
+                                        <div><strong>Data/Hora:</strong> <span id="report-timestamp">16/07/2026 - 10:30</span></div>
+                                    </div>
+
+                                    <hr class="report-divider">
+
+                                    <div class="report-content">
+                                        <p id="report-text-desc">O algoritmo analisou o arquivo de entrada utilizando uma rede neural profunda com peso calibrado, detectando padrões compatíveis com a classe.</p>
+                                        
+                                        <div class="recommendations-box">
+                                            <h5><i class="fa-solid fa-user-doctor"></i> Próximos Passos Sugeridos:</h5>
+                                            <ul id="recommendations-list">
+                                                <li>Encaminhamento imediato para neurologista/neurocirurgião.</li>
+                                                <li>Realização de ressonância magnética com contraste para melhor delimitação espacial.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="report-actions">
+                                        <button class="btn btn-primary btn-sm" id="print-report-btn">
+                                            <i class="fa-solid fa-print"></i> Imprimir Laudo
+                                        </button>
+                                        <button class="btn btn-outline btn-sm" id="reset-analysis-btn">
+                                            <i class="fa-solid fa-rotate-left"></i> Nova Análise
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Performance Section -->
+        <section class="app-dashboard">
+            <div class="glass-panel performance-panel">
+                <div class="performance-header">
+                    <div>
+                        <h2><i class="fa-solid fa-chart-line"></i> Histórico de Treinamento e Curvas de Aprendizado</h2>
+                        <p class="panel-subtitle">Análise das curvas de Acurácia e Perda (Loss) registradas durante as 30 épocas do treinamento da CNN.</p>
+                    </div>
+                    <div class="chart-toggles">
+                        <button class="chart-toggle-btn active" data-chart="accuracy">Acurácia</button>
+                        <button class="chart-toggle-btn" data-chart="loss">Perda (Loss)</button>
+                    </div>
+                </div>
+                
+                <div class="chart-wrapper">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 NeuroScan AI. Desenvolvido para auxílio diagnóstico médico computacional em ambiente de pesquisa.</p>
+            <p class="footer-note">Importante: Esta ferramenta é de caráter informativo e de apoio à pesquisa. Não substitui o laudo de um médico especialista.</p>
+        </footer>
+    </div>
+    <!-- Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>
