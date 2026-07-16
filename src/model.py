@@ -32,7 +32,7 @@ def criar_modelo():
 
         # Analisa as características encontradas
         Dense(128, activation= 'relu'),
-        Dropout(0.5),
+        Dropout(0.3),
         Dense(1, activation='sigmoid'),
 
     ])

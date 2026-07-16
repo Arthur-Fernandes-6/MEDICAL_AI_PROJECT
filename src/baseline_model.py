@@ -7,6 +7,7 @@ from tensorflow.keras.layers import Dense
 def criar_modelo_baseline():
     modelo = keras.Sequential([
 
+        # Primeira camada convolucional
         Conv2D(
             filters= 16,
             kernel_size=(3,3),
@@ -14,6 +15,7 @@ def criar_modelo_baseline():
             input_shape = (224, 224, 3)
         ),
 
+        # Reduz a dimensionalidade da imagem
         MaxPooling2D(pool_size = (2,2)),
 
         Conv2D(
@@ -24,8 +26,10 @@ def criar_modelo_baseline():
         
         MaxPooling2D(pool_size = (2,2)),
 
+        # Converte os mapas de características em um vetor
         Flatten(),
 
+        # Camada totalmente conectada
         Dense(64, activation='relu'),
         Dense(1, activation='sigmoid')
     ])
@@ -34,7 +38,7 @@ def criar_modelo_baseline():
 # Mede o erro da IA
 # acompanha o desempenho 
     modelo.compile(
-        optimizer = 'adam',
+        optimizer = 'adam',# funciona muito bem em CNN
         loss = 'binary_crossentropy',
         metrics = ['accuracy']
     )
