@@ -8,7 +8,7 @@ from sklearn.metrics import (
     classification_report
 )
 
-
+# testando o modelo treinado em um conjunto de teste separado, que não foi usado durante o treinamento ou validação, para avaliar a capacidade do modelo de generalizar para novos dados
 def avaliar_modelo():
     print("Carregando o modelo...")
 
@@ -16,7 +16,7 @@ def avaliar_modelo():
 
     print("Carregando o conjunto de teste...")
 
-    x_test, y_test = carregar_dataset_v2(
+    x_test, y_test = carregar_dataset_v2( # x e y recebem as imagens e rótulos do conjunto de teste
         "brain_tumor_mri_dataset",
         "Testing"
     )
@@ -26,9 +26,9 @@ def avaliar_modelo():
 
     print("\nRealizando previsões...")
 
-    probabilidades = modelo.predict(x_test)
+    probabilidades = modelo.predict(x_test) # gera as probabilidades de cada imagem do conjunto de teste pertencer à classe "Tumor" (1) ou "Sem tumor" (0)
 
-    previsoes = (probabilidades >= 0.5).astype(int).flatten()
+    previsoes = (probabilidades >= 0.5).astype(int).flatten() # converte as probabilidades em rótulos binários (0 ou 1) com base em um limiar de 0,5 e achata o array para uma dimensão
 
     y_test = y_test.astype(int)
 
@@ -36,7 +36,7 @@ def avaliar_modelo():
 
     matriz = confusion_matrix(y_test, previsoes)
 
-    relatorio = classification_report(
+    relatorio = classification_report( # gera um relatório detalhado de métricas de classificação, incluindo precisão, recall e F1-score para cada classe
         y_test,
         previsoes,
         target_names=["Sem tumor", "Tumor"]
