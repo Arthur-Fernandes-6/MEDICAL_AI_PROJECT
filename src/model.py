@@ -5,6 +5,7 @@ from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Dropout
 
+# criar o modelo de rede neural convolucional (CNN) para classificação de imagens de ressonância magnética do cérebro
 def criar_modelo():
     modelo = keras.Sequential([
         # encontra os padrões

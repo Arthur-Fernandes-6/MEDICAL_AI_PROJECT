@@ -6,15 +6,15 @@ def carregar_dataset_v2(caminho_dataset, conjunto):
     x = []
     y = []
 
-    mapeamento = {
+    mapeamento = {# dicionario com os nomes das pastas e seus respectivos rótulos
         "glioma" : 1,
         "meningioma" : 1,
         "pituitary" : 1,
         "notumor" : 0
     }
 
-    for nome_classe, rotulo in mapeamento.items():
-        
+    for nome_classe, rotulo in mapeamento.items():# percorre o dicionário mapeamento, onde nome_classe é a chave e rotulo é o valor
+
         caminhoClasse = os.path.join(caminho_dataset, conjunto, nome_classe)
         arquivos = os.listdir(caminhoClasse)
 
