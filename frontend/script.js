@@ -39,17 +39,49 @@ document.addEventListener("DOMContentLoaded", () => {
     let performanceChart = null;
 
     // Dados das curvas de aprendizado
-    const epochs = Array.from({ length: 15 }, (_, i) => i + 1); // 15 épocas exibidas
-    const trainingData = {
-        accuracy: {
-            train: [0.68, 0.75, 0.81, 0.84, 0.87, 0.89, 0.91, 0.93, 0.94, 0.95, 0.96, 0.965, 0.97, 0.975, 0.98],
-            val: [0.70, 0.73, 0.78, 0.82, 0.85, 0.86, 0.89, 0.90, 0.91, 0.92, 0.93, 0.935, 0.94, 0.945, 0.9512]
-        },
-        loss: {
-            train: [0.65, 0.54, 0.45, 0.38, 0.32, 0.28, 0.24, 0.20, 0.18, 0.15, 0.13, 0.11, 0.10, 0.09, 0.08],
-            val: [0.61, 0.56, 0.48, 0.41, 0.35, 0.32, 0.28, 0.25, 0.22, 0.20, 0.18, 0.17, 0.16, 0.155, 0.1482]
-        }
-    };
+    const epochs = [1, 2, 3, 4, 5, 6];
+
+const trainingData = {
+    accuracy: {
+        train: [
+            0.8728,
+            0.9625,
+            0.9835,
+            0.9891,
+            0.9908,
+            0.9967
+        ],
+
+        val: [
+            0.9250,
+            0.9732,
+            0.9723,
+            0.9777,
+            0.9741,
+            0.9768
+        ]
+    },
+
+    loss: {
+        train: [
+            0.3794,
+            0.1300,
+            0.0559,
+            0.0334,
+            0.0242,
+            0.0092
+        ],
+
+        val: [
+            0.2396,
+            0.1026,
+            0.0901,
+            0.1083,
+            0.1042,
+            0.1203
+        ]
+    }
+};
 
     // ==========================================================================
     // 1. Inicialização e Status da Conexão
@@ -253,29 +285,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (hasTumor) {
             classificationBadge.classList.add("tumor");
-            classificationText.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Tumor Detectado`;
-            
-            // Relatório de Tumor
-            reportTextDesc.innerHTML = `O algoritmo de visão computacional identificou anormalidade estrutural de alta densidade no exame de ressonância magnética (MRI) <strong>${filename}</strong>. A assinatura de contraste e bordas é compatível com tecidos tumorais típicos, apresentando um nível de confiança estatística de <strong>${confPercent}%</strong>.`;
-            
+
+            classificationText.innerHTML = `
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Padrão associado à classe Tumor
+            `;
+
+            reportTextDesc.innerHTML = `
+                O modelo de visão computacional classificou a imagem
+                <strong>${filename}</strong> como pertencente à classe
+                <strong>Tumor</strong>, com confiança de
+                <strong>${confPercent}%</strong>.
+
+                Este resultado é experimental e representa apenas a classificação
+                produzida pelo modelo a partir dos padrões aprendidos no dataset.
+                Ele não constitui diagnóstico médico.
+            `;
+
             recommendationsList.innerHTML = `
-                <li><strong>Encaminhamento prioritário:</strong> Direcionar o paciente imediatamente a um Neurologista ou Neurocirurgião.</li>
-                <li><strong>Exame complementar:</strong> Recomenda-se realizar ressonância magnética cerebral com contraste de gadolínio para melhor delimitação anatômica tridimensional.</li>
-                <li><strong>Correlação de Sintomas:</strong> Avaliar clinicamente o paciente para correlacionar o achado de imagem com possíveis cefaleias persistentes, alterações de visão ou déficits neurológicos focais.</li>
+                <li>
+                    <strong>Interpretação profissional:</strong>
+                    A imagem deve ser avaliada por um médico especialista.
+                </li>
+
+                <li>
+                    <strong>Limitação do modelo:</strong>
+                    O sistema não identifica localização, tamanho, estágio ou tipo específico de tumor.
+                </li>
+
+                <li>
+                    <strong>Finalidade acadêmica:</strong>
+                    O resultado não deve ser usado isoladamente para decisões clínicas.
+                </li>
             `;
         } else {
             classificationBadge.classList.add("sem-tumor");
-            classificationText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Sem Tumor Detectado`;
 
-            // Relatório de Sem Tumor
-            reportTextDesc.innerHTML = `O algoritmo de visão computacional analisou o exame de ressonância magnética (MRI) <strong>${filename}</strong> e não detectou padrões sugestivos de lesões expansivas ou tecidos tumorais primários ou secundários nas imagens fornecidas, atingindo uma confiança de <strong>${confPercent}%</strong> para exame normal.`;
-            
-            recommendationsList.innerHTML = `
-                <li><strong>Acompanhamento preventivo:</strong> Manter a rotina padrão de cuidados clínicos de acordo com a idade e o histórico familiar do paciente.</li>
-                <li><strong>Persistência de Sintomas:</strong> Caso persistam sintomas neurológicos (mesmo com MRI normal), aconselha-se uma consulta especializada para investigar outras patologias não associadas a massas encefálicas.</li>
-                <li><strong>Arquivamento Seguro:</strong> Salvar este laudo preliminar no Prontuário Eletrônico do Paciente (PEP) para registros de baseline.</li>
+            classificationText.innerHTML = `
+                <i class="fa-solid fa-circle-check"></i>
+                Padrão associado à classe Sem Tumor
             `;
-        }
+
+            reportTextDesc.innerHTML = `
+                O modelo de visão computacional classificou a imagem
+                <strong>${filename}</strong> como pertencente à classe
+                <strong>Sem Tumor</strong>, com confiança de
+                <strong>${confPercent}%</strong>.
+
+                Isso significa apenas que os padrões visuais observados foram mais
+                semelhantes às imagens da classe sem tumor utilizadas no treinamento.
+                O resultado não exclui doenças ou outras alterações médicas.
+            `;
+
+            recommendationsList.innerHTML = `
+                <li>
+                    <strong>Avaliação especializada:</strong>
+                    O resultado deve ser interpretado por um profissional de saúde.
+                </li>
+
+                <li>
+                    <strong>Possibilidade de erro:</strong>
+                    O modelo pode produzir falsos negativos e falsos positivos.
+                </li>
+
+                <li>
+                    <strong>Finalidade acadêmica:</strong>
+                    Esta ferramenta não substitui exames, laudos ou avaliação médica.
+                </li>
+            `;
+}
 
         // Animação suave de enchimento da barra
         setTimeout(() => {

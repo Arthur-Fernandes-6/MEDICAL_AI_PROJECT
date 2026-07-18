@@ -26,7 +26,7 @@
                 </div>
                 <div class="brand-text">
                     <h1>NeuroScan <span class="accent-text">AI</span></h1>
-                    <p>Classificação Avançada de Tumor Cerebral</p>
+                    <p>Classificação Experimental de Imagens de Ressonância Magnética</p>
                 </div>
             </div>
             <div class="header-status">
@@ -80,7 +80,7 @@
                     
                     <div class="specs-grid">
                         <div class="spec-card">
-                            <span class="spec-label">Acurácia no Testing</span>
+                            <span class="spec-label">Acurácia no conjunto de Teste</span>
                             <span class="spec-value text-emerald">94.00%</span>
                         </div>
                         <div class="spec-card">
@@ -109,7 +109,7 @@
                 <!-- Main Results Display -->
                 <div class="glass-panel results-panel" id="results-panel">
                     <div class="panel-header-action">
-                        <h2 class="panel-title"><i class="fa-solid fa-square-poll-vertical"></i> Resultado do Diagnóstico</h2>
+                        <h2 class="panel-title"><i class="fa-solid fa-square-poll-vertical"></i> Resultado da Classificação</h2>
                         <span id="simulation-warning" class="badge-warning hide"><i class="fa-solid fa-bolt"></i> Simulado</span>
                     </div>
 
@@ -166,7 +166,7 @@
 
                                 <!-- Clinician Report -->
                                 <div class="clinical-report">
-                                    <h4><i class="fa-solid fa-file-waveform"></i> Relatório Médico Preliminar</h4>
+                                    <h4><i class="fa-solid fa-file-waveform"></i> Relatório Computacional Preliminar</h4>
                                     
                                     <div class="report-metadata">
                                         <div><strong>ID do Exame:</strong> <span id="report-exam-id">#94827-AX</span></div>
@@ -176,20 +176,20 @@
                                     <hr class="report-divider">
 
                                     <div class="report-content">
-                                        <p id="report-text-desc">O algoritmo analisou o arquivo de entrada utilizando uma rede neural profunda com peso calibrado, detectando padrões compatíveis com a classe.</p>
+                                        <p id="report-text-desc">O modelo analisou a imagem enviada e identificou padrões visuais associados a uma das classes aprendidas durante o treinamento.</p>
                                         
                                         <div class="recommendations-box">
-                                            <h5><i class="fa-solid fa-user-doctor"></i> Próximos Passos Sugeridos:</h5>
+                                            <h5><i class="fa-solid fa-user-doctor"></i> Orientações sobre o resultado: </h5>
                                             <ul id="recommendations-list">
-                                                <li>Encaminhamento imediato para neurologista/neurocirurgião.</li>
-                                                <li>Realização de ressonância magnética com contraste para melhor delimitação espacial.</li>
+                                                <li>Este resultado possui finalidade acadêmica e experimental.</li>
+                                                <li>A interpretação da imagem deve ser realizada por um profissional de saúde qualificado.</li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <div class="report-actions">
                                         <button class="btn btn-primary btn-sm" id="print-report-btn">
-                                            <i class="fa-solid fa-print"></i> Imprimir Laudo
+                                            <i class="fa-solid fa-print"></i> Imprimir Resultado
                                         </button>
                                         <button class="btn btn-outline btn-sm" id="reset-analysis-btn">
                                             <i class="fa-solid fa-rotate-left"></i> Nova Análise
@@ -209,7 +209,7 @@
                 <div class="performance-header">
                     <div>
                         <h2><i class="fa-solid fa-chart-line"></i> Histórico de Treinamento e Curvas de Aprendizado</h2>
-                        <p class="panel-subtitle">Análise das curvas de Acurácia e Perda (Loss) registradas durante as 30 épocas do treinamento da CNN.</p>
+                        <p class="panel-subtitle"> Análise das curvas de acurácia e perda registradas durante as 6 épocas executadas antes da parada antecipada.</p>
                     </div>
                     <div class="chart-toggles">
                         <button class="chart-toggle-btn active" data-chart="accuracy">Acurácia</button>
