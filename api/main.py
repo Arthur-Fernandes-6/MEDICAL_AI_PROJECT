@@ -5,6 +5,7 @@ from PIL import Image
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
+from fastapi.staticfiles import StaticFiles
 
 #cria a rota para a API
 app = FastAPI(
@@ -26,7 +27,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
 # Caminho absoluto da raiz do projeto
 CAMINHO_PROJETO = os.path.abspath(
     os.path.join(
@@ -42,6 +42,16 @@ CAMINHO_MODELO = os.path.join(
     "brain_tumor_cnn_v2.keras"
 )
 
+CAMINHO_AMOSTRAS = os.path.join( # caminho para a pasta de amostras de imagens
+    CAMINHO_PROJETO,
+    "datasets"
+)
+
+app.mount(
+    "/samples",
+    StaticFiles(directory=CAMINHO_AMOSTRAS),
+    name="samples"
+)
 
 # Carrega o modelo apenas uma vez
 try:
@@ -61,6 +71,52 @@ def home():
     return {
         "mensagem": "Brain Tumor Detection API funcionando!"
     }
+
+
+@app.get("/api/samples")
+def listar_amostras():
+    amostras = []
+
+    pastas = {
+        "yes": "yes",
+        "no": "no"
+    }
+
+    extensoes_permitidas = (
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".bmp",
+        ".webp"
+    )
+
+    for nome_pasta, label in pastas.items():
+        caminho_pasta = os.path.join(
+            CAMINHO_AMOSTRAS,
+            nome_pasta
+        )
+
+        if not os.path.exists(caminho_pasta):
+            continue
+
+        arquivos = os.listdir(caminho_pasta)
+
+        arquivos_imagem = [
+            arquivo
+            for arquivo in arquivos
+            if arquivo.lower().endswith(extensoes_permitidas)
+        ]
+
+        arquivos_imagem.sort()
+
+        for arquivo in arquivos_imagem[:4]:
+            amostras.append({
+                "filename": arquivo,
+                "label": label,
+                "url": f"http://127.0.0.1:8000/samples/{nome_pasta}/{arquivo}"
+            })
+
+    return amostras
 
 # Rota para verificar o status da API
 @app.get("/api/status")
