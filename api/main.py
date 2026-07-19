@@ -162,19 +162,13 @@ async def predict(
         confianca = 1 - probabilidade_tumor
 
     return {
-        "classificacao": classificacao,
-        "probabilidade_tumor": round(
-            probabilidade_tumor * 100,
-            2
-        ),
-        "confianca": round(
-            confianca * 100,
-            2
-        ),
-        "limiar": 0.5,
-        "arquivo": arquivo.filename,
-        "aviso": (
-            "Resultado computacional para fins educacionais. "
-            "Não representa diagnóstico médico."
-        )
-    }
+    "classificacao": classificacao,
+    "probabilidade": probabilidade_tumor,
+    "confianca": confianca,
+    "arquivo": arquivo.filename,
+    "simulado": False,
+    "aviso": (
+        "Resultado computacional para fins educacionais. "
+        "Não representa diagnóstico médico."
+    )
+}
