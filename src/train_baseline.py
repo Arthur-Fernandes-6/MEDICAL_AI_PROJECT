@@ -25,7 +25,7 @@ modelo_baseline.summary()
 parada_antecipada = EarlyStopping(
     monitor="val_loss",
     patience=3,
-    restore_best_weights=True
+    restore_best_weights=True # recupera os pesos da melhor época (menor val_loss) ao final do treinamento
 )
 
 historico_baseline = modelo_baseline.fit(
@@ -111,10 +111,3 @@ plt.title("Loss — Modelo Baseline")
 plt.legend()
 plt.show()
 
-print(
-    classification_report(
-        y_test,
-        y_pred_baseline,
-        target_names=["Sem tumor", "Tumor"]
-    )
-)
