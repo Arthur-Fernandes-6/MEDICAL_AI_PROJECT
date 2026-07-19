@@ -6,6 +6,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 #cria a rota para a API
 app = FastAPI(
@@ -47,10 +48,21 @@ CAMINHO_AMOSTRAS = os.path.join( # caminho para a pasta de amostras de imagens
     "datasets"
 )
 
+CAMINHO_FRONTEND = os.path.join(
+    CAMINHO_PROJETO,
+    "frontend"
+)
+
 app.mount(
     "/samples",
     StaticFiles(directory=CAMINHO_AMOSTRAS),
     name="samples"
+)
+
+app.mount(
+    "/frontend",
+    StaticFiles(directory=CAMINHO_FRONTEND),
+    name="frontend"
 )
 
 # Carrega o modelo apenas uma vez
@@ -66,12 +78,14 @@ except Exception as erro:
     erro_modelo = str(erro)
 
 
-@app.get("/")
+@app.get("/")# Rota para a página inicial
 def home():
-    return {
-        "mensagem": "Brain Tumor Detection API funcionando!"
-    }
+    caminho_index = os.path.join(
+        CAMINHO_FRONTEND,
+        "index.html"
+    )
 
+    return FileResponse(caminho_index)
 
 @app.get("/api/samples")
 def listar_amostras():

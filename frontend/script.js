@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // URL base da API
-    const API_URL = "http://127.0.0.1:8000"; // Caminho relativo, pois o backend serve o frontend estático
+    const API_URL = ""; // Caminho relativo, pois o backend serve o frontend estático
 
     // Elementos DOM - Status
     const statusBadge = document.getElementById("status-badge");
