@@ -6,3 +6,4 @@ numpy==2.4.2
 tensorflow==2.21.0
 lime
 scikit-image
+lime
