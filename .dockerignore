@@ -1,0 +1,32 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Editor e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/
+
+# Dados usados somente no treinamento
+brain_tumor_mri_dataset/
+externalTest/
+src/
+
+# Arquivos desnecessários
+*.log
+.pytest_cache/

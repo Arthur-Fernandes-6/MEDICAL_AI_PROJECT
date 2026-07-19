@@ -1,0 +1,8 @@
+fastapi==0.139.2
+uvicorn==0.51.0
+python-multipart==0.0.32
+pillow==12.3.0
+numpy==2.4.2
+tensorflow==2.21.0
+lime
+scikit-image
