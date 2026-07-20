@@ -43,8 +43,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
 
 ---
 
-## Resultado da Classificação
-## Explicabilidade com LIME
+## Resultado da Classificação e  Explicabilidade com LIME
 ![Resultado](README/prediction.png)
 
 ---
@@ -139,13 +138,12 @@ BRAIN_TUMOR_DETECTION_AI
 ## 1. Clone o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/BRAIN_TUMOR_DETECTION_AI.git
-```
+git clone https://github.com/Arthur-Fernandes-6/MEDICAL_AI_PROJECT.git```
 
 ## 2. Acesse a pasta
 
 ```bash
-cd BRAIN_TUMOR_DETECTION_AI
+cd MEDICAL_AI_PROJECT
 ```
 
 ## 3. Instale as dependências
