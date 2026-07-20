@@ -55,17 +55,32 @@ CAMINHO_FRONTEND = os.path.join(
     "frontend"
 )
 
+# Rota para servir arquivos estáticos das amostras de imagens
 app.mount(
     "/samples",
     StaticFiles(directory=CAMINHO_AMOSTRAS),
     name="samples"
 )
 
+# Rota para servir arquivos estáticos do frontend
 app.mount(
     "/frontend",
     StaticFiles(directory=CAMINHO_FRONTEND),
     name="frontend"
 )
+
+print("=" * 60)
+print("CAMINHO DO MODELO:")
+print(CAMINHO_MODELO)
+
+print("EXISTE?")
+print(os.path.exists(CAMINHO_MODELO))
+
+if os.path.exists(CAMINHO_MODELO):
+    print(
+        f"Tamanho: {os.path.getsize(CAMINHO_MODELO)/1024/1024:.2f} MB"
+    )
+print("=" * 60)
 
 # Carrega o modelo apenas uma vez
 try:
@@ -75,6 +90,10 @@ try:
 
 
 except Exception as erro:
+
+    print("ERRO AO CARREGAR O MODELO:")
+    print(erro)
+
     modelo = None
     modelo_carregado = False
     erro_modelo = str(erro)
@@ -129,7 +148,7 @@ def listar_amostras():
             amostras.append({
                 "filename": arquivo,
                 "label": label,
-                "url": f"http://127.0.0.1:8000/samples/{nome_pasta}/{arquivo}"
+                "url": f"/samples/{nome_pasta}/{arquivo}"
             })
 
     return amostras
