@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from api.lime_explainer import gerar_explicacao_lime
+
 
 #cria a rota para a API
 app = FastAPI(
@@ -169,7 +171,18 @@ def preprocessar_imagem(conteudo: bytes) -> np.ndarray:
         axis=0 
     )
 
-    return array_imagem
+    imagem_original = np.array(imagem)
+
+    array_imagem = imagem_original.astype(np.float32) / 255.0
+
+    array_imagem = np.expand_dims(
+        array_imagem,
+        axis=0
+)
+
+    return imagem_original, array_imagem
+
+
 
 # Rota para previsão de tumor cerebral
 @app.post("/api/predict")
@@ -210,7 +223,7 @@ async def predict(
             detail="O arquivo enviado está vazio."
         )
 
-    imagem_processada = preprocessar_imagem(
+    imagem_original, imagem_processada = preprocessar_imagem(
         conteudo
     )
 
@@ -218,6 +231,12 @@ async def predict(
         imagem_processada,
         verbose=0 
     )
+
+    explicacao_lime = gerar_explicacao_lime(
+    modelo,
+    imagem_original
+)
+
 
     probabilidade_tumor = float(
         previsao[0][0] # pega a probabilidade de tumor da previsão
@@ -235,6 +254,7 @@ async def predict(
     "classificacao": classificacao,
     "probabilidade": probabilidade_tumor,
     "confianca": confianca,
+    "lime_imagem": explicacao_lime,
     "arquivo": arquivo.filename,
     "simulado": False,
     "aviso": (

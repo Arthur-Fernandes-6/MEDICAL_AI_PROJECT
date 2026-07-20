@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Elementos DOM - Laudo Médico
     const previewImage = document.getElementById("preview-image");
+    const limeContainer = document.getElementById("lime-container");
+    const limeImage = document.getElementById("lime-image");
     const classificationBadge = document.getElementById("classification-badge");
     const classificationText = document.getElementById("classification-text");
     const confidencePercentage = document.getElementById("confidence-percentage");
@@ -261,6 +263,19 @@ const trainingData = {
 
     function renderizarResultados(res, filename) {
         exibirEstado("success");
+        
+        if (res.lime_imagem) {
+
+        limeImage.src =
+            `data:image/png;base64,${res.lime_imagem}`;
+
+            limeContainer.style.display = "block";
+            console.log("LIME EXIBIDO!");
+            console.log(limeImage.src.length);
+
+        }else {
+            limeContainer.style.display = "none";
+        }
 
         // Status de Simulação
         if (res.simulado) {

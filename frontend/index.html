@@ -143,7 +143,35 @@
                                 <div class="mri-overlay-grid"></div>
                                 <div class="laser-scanner"></div>
                             </div>
+                            <!-- LIME Explanation Container -->
+                            <div id="lime-container" style="display: none; margin-top: 24px;">
 
+                                <div class="lime-header">
+                                    <h4>
+                                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                        Explicabilidade do Modelo
+                                    </h4>
+
+                                    <p>
+                                        As regiões em amarelo foram as que mais contribuíram
+                                        para a classificação produzida pela CNN.
+                                    </p>
+                                </div>
+
+                                <div class="lime-image-wrapper">
+                                    <img
+                                        id="lime-image"
+                                        src=""
+                                        alt="Mapa explicativo gerado pelo LIME"
+                                    >
+                                </div>
+
+                                <p class="lime-warning">
+                                    A explicação representa o comportamento do modelo e não indica,
+                                    necessariamente, a localização clínica de uma lesão.
+                                </p>
+
+                        </div>
                             <!-- Analysis Details -->
                             <div class="analysis-details">
                                 <div class="metrics-header">
@@ -230,6 +258,6 @@
         </footer>
     </div>
     <!-- Script Principal -->
-    <script src="/frontend/script.js"></script>
+    <script src="/frontend/script.js?v=2"></script>
 </body>
 </html>
