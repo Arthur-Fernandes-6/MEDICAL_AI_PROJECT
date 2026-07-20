@@ -44,14 +44,11 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
 ---
 
 ## Resultado da Classificação
-
+## Explicabilidade com LIME
 ![Resultado](README/prediction.png)
 
 ---
 
-## Explicabilidade com LIME
-
-![LIME](README/lime.png)
 
 ---
 
