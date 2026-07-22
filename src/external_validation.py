@@ -6,7 +6,7 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay
 )
 import matplotlib.pyplot as plt
-from preditc import prever_imagem
+from preditcv1 import prever_imagem
 
 
 def validar_externamente(caminho_dataset):

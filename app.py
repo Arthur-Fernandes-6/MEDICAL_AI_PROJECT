@@ -44,7 +44,7 @@ else:
         import numpy as np
         import cv2 as cv
         from tensorflow.keras.models import load_model
-        from preprocess import preprocessar_imagem
+        from preprocessv1 import preprocessar_imagem
         
         print("[*] Carregando modelo do TensorFlow...")
         MODELO = load_model(CAMINHO_MODELO)
@@ -146,7 +146,7 @@ def predict():
             }
         else:
             import numpy as np
-            from preprocess import preprocessar_imagem
+            from preprocessv1 import preprocessar_imagem
             
             imagem = preprocessar_imagem(filepath)
             if imagem is None:
