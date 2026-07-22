@@ -1,4 +1,4 @@
-from dataset import carregar_dataset
+from datasetv1 import carregar_dataset
 from sklearn.model_selection import train_test_split
 from model import criar_modelo
 import matplotlib.pyplot as plt

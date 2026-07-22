@@ -1,5 +1,5 @@
 import os
-from preprocess import *
+from preprocessv1 import *
 import numpy as np
 # função responsavel por carregar todo o dataset
 def carregar_dataset(dataset_path):

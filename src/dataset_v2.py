@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from preprocess import preprocessar_imagem
+from preprocessv1 import preprocessar_imagem
 
 def carregar_dataset_v2(caminho_dataset, conjunto):
     x = []
