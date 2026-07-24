@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Elementos DOM - Laudo Médico
     const previewImage = document.getElementById("preview-image");
-    const limeContainer = document.getElementById("lime-container");
-    const limeImage = document.getElementById("lime-image");
+    const gradcamContainer =
+    document.getElementById("gradcam-container");
+    const gradcamImage =
+    document.getElementById("gradcam-image");
     const classificationBadge = document.getElementById("classification-badge");
     const classificationText = document.getElementById("classification-text");
     const confidencePercentage = document.getElementById("confidence-percentage");
@@ -241,9 +243,13 @@ const trainingData = {
 
             if (!response.ok) {
                 const errData = await response.json();
-                throw new Error(errData.error || "Erro na análise.");
-            }
 
+                throw new Error(
+                    errData.detail
+                    || errData.error
+                    || "Erro na análise."
+                );
+            }
             const resultado = await response.json();
             
             // Simula um delay visual de escaneamento de pelo menos 1.5s para melhor experiência clínica (WOW)
@@ -262,126 +268,163 @@ const trainingData = {
     }
 
     function renderizarResultados(res, filename) {
-        exibirEstado("success");
-        
-        if (res.lime_imagem) {
+    exibirEstado("success");
 
-        limeImage.src =
-            `data:image/png;base64,${res.lime_imagem}`;
+    if (res.gradcam_imagem) {
+        gradcamImage.src =
+            `data:image/png;base64,${res.gradcam_imagem}`;
 
-            limeContainer.style.display = "block";
-            console.log("LIME EXIBIDO!");
-            console.log(limeImage.src.length);
+        gradcamContainer.style.display = "block";
 
-        }else {
-            limeContainer.style.display = "none";
-        }
+    console.log(
+        "Grad-CAM exibido com sucesso."
+    );
+    } else {
+        gradcamImage.src = "";
+        gradcamContainer.style.display = "none";
 
-        // Status de Simulação
-        if (res.simulado) {
-            simulationWarning.classList.remove("hide");
-        } else {
-            simulationWarning.classList.add("hide");
-        }
-
-        // Configuração de Badges e Cores
-        classificationBadge.className = "classification-badge";
-        const hasTumor = res.classificacao === "Tumor";
-
-        // Confiança formatada
-        // Se Tumor: probabilidade * 100
-        // Se Sem Tumor: (1 - probabilidade) * 100
-        const confRaw = hasTumor ? res.probabilidade : (1 - res.probabilidade);
-        const confPercent = (confRaw * 100).toFixed(2);
-        
-        confidencePercentage.innerText = `${confPercent}%`;
-        confidenceBarFill.style.width = "0%"; // Reseta para animar de novo
-
-        if (hasTumor) {
-            classificationBadge.classList.add("tumor");
-
-            classificationText.innerHTML = `
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                Padrão associado à classe Tumor
-            `;
-
-            reportTextDesc.innerHTML = `
-                O modelo de visão computacional classificou a imagem
-                <strong>${filename}</strong> como pertencente à classe
-                <strong>Tumor</strong>, com confiança de
-                <strong>${confPercent}%</strong>.
-
-                Este resultado é experimental e representa apenas a classificação
-                produzida pelo modelo a partir dos padrões aprendidos no dataset.
-                Ele não constitui diagnóstico médico.
-            `;
-
-            recommendationsList.innerHTML = `
-                <li>
-                    <strong>Interpretação profissional:</strong>
-                    A imagem deve ser avaliada por um médico especialista.
-                </li>
-
-                <li>
-                    <strong>Limitação do modelo:</strong>
-                    O sistema não identifica localização, tamanho, estágio ou tipo específico de tumor.
-                </li>
-
-                <li>
-                    <strong>Finalidade acadêmica:</strong>
-                    O resultado não deve ser usado isoladamente para decisões clínicas.
-                </li>
-            `;
-        } else {
-            classificationBadge.classList.add("sem-tumor");
-
-            classificationText.innerHTML = `
-                <i class="fa-solid fa-circle-check"></i>
-                Padrão associado à classe Sem Tumor
-            `;
-
-            reportTextDesc.innerHTML = `
-                O modelo de visão computacional classificou a imagem
-                <strong>${filename}</strong> como pertencente à classe
-                <strong>Sem Tumor</strong>, com confiança de
-                <strong>${confPercent}%</strong>.
-
-                Isso significa apenas que os padrões visuais observados foram mais
-                semelhantes às imagens da classe sem tumor utilizadas no treinamento.
-                O resultado não exclui doenças ou outras alterações médicas.
-            `;
-
-            recommendationsList.innerHTML = `
-                <li>
-                    <strong>Avaliação especializada:</strong>
-                    O resultado deve ser interpretado por um profissional de saúde.
-                </li>
-
-                <li>
-                    <strong>Possibilidade de erro:</strong>
-                    O modelo pode produzir falsos negativos e falsos positivos.
-                </li>
-
-                <li>
-                    <strong>Finalidade acadêmica:</strong>
-                    Esta ferramenta não substitui exames, laudos ou avaliação médica.
-                </li>
-            `;
+        console.warn(
+        "A API não retornou uma imagem Grad-CAM."
+        );
 }
-
-        // Animação suave de enchimento da barra
-        setTimeout(() => {
-            confidenceBarFill.style.width = `${confPercent}%`;
-        }, 100);
-
-        // Preenche metadados do laudo
-        const randomID = Math.floor(10000 + Math.random() * 90000);
-        reportExamId.innerText = `#NS-${randomID}-MRI`;
-        
-        const agora = new Date();
-        const dataFormatada = agora.toLocaleDateString("pt-BR") + " - " + agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
-        reportTimestamp.innerText = dataFormatada;
+    // Status de simulação
+    if (res.simulado) {
+        simulationWarning.classList.remove("hide");
+    } else {
+        simulationWarning.classList.add("hide");
     }
+
+    // Configuração da classificação
+    classificationBadge.className =
+        "classification-badge";
+
+    const hasTumor =
+        res.classificacao === "Tumor";
+
+    // Usa a confiança percentual retornada pela API
+    const confiancaPercentualRecebida =
+        Number(res.confianca_percentual);
+
+    const confPercent = Number.isFinite(
+        confiancaPercentualRecebida
+    )
+        ? confiancaPercentualRecebida.toFixed(2)
+        : "0.00";
+
+    confidencePercentage.innerText =
+        `${confPercent}%`;
+
+    confidenceBarFill.style.width = "0%";
+
+    if (hasTumor) {
+        classificationBadge.classList.add(
+            "tumor"
+        );
+
+        classificationText.innerHTML = `
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Padrão associado à classe Tumor
+        `;
+
+        reportTextDesc.innerHTML = `
+            O modelo de visão computacional classificou a imagem
+            <strong>${filename}</strong> como pertencente à classe
+            <strong>Tumor</strong>, com confiança de
+            <strong>${confPercent}%</strong>.
+
+            Este resultado é experimental e representa apenas a
+            classificação produzida pelo modelo a partir dos padrões
+            aprendidos no dataset. Ele não constitui diagnóstico médico.
+        `;
+
+        recommendationsList.innerHTML = `
+            <li>
+                <strong>Interpretação profissional:</strong>
+                A imagem deve ser avaliada por um médico especialista.
+            </li>
+
+            <li>
+                <strong>Limitação do modelo:</strong>
+                O sistema não identifica com precisão clínica a localização,
+                o tamanho, o estágio ou o tipo específico do tumor.
+            </li>
+
+            <li>
+                <strong>Finalidade acadêmica:</strong>
+                O resultado não deve ser usado isoladamente para decisões
+                clínicas.
+            </li>
+        `;
+    } else {
+        classificationBadge.classList.add(
+            "sem-tumor"
+        );
+
+        classificationText.innerHTML = `
+            <i class="fa-solid fa-circle-check"></i>
+            Padrão associado à classe Sem Tumor
+        `;
+
+        reportTextDesc.innerHTML = `
+            O modelo de visão computacional classificou a imagem
+            <strong>${filename}</strong> como pertencente à classe
+            <strong>Sem Tumor</strong>, com confiança de
+            <strong>${confPercent}%</strong>.
+
+            Isso significa apenas que os padrões visuais observados foram
+            mais semelhantes às imagens da classe sem tumor utilizadas no
+            treinamento. O resultado não exclui doenças ou outras alterações
+            médicas.
+        `;
+
+        recommendationsList.innerHTML = `
+            <li>
+                <strong>Avaliação especializada:</strong>
+                O resultado deve ser interpretado por um profissional de
+                saúde.
+            </li>
+
+            <li>
+                <strong>Possibilidade de erro:</strong>
+                O modelo pode produzir falsos negativos e falsos positivos.
+            </li>
+
+            <li>
+                <strong>Finalidade acadêmica:</strong>
+                Esta ferramenta não substitui exames, laudos ou avaliação
+                médica.
+            </li>
+        `;
+    }
+
+    setTimeout(() => {
+        confidenceBarFill.style.width =
+            `${confPercent}%`;
+    }, 100);
+
+    const randomID = Math.floor(
+        10000 + Math.random() * 90000
+    );
+
+    reportExamId.innerText =
+        `#NS-${randomID}-MRI`;
+
+    const agora = new Date();
+
+    const dataFormatada =
+        agora.toLocaleDateString("pt-BR")
+        + " - "
+        + agora.toLocaleTimeString(
+            "pt-BR",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+    reportTimestamp.innerText =
+        dataFormatada;
+}
 
     function exibirEstado(state) {
         stateEmpty.classList.remove("active");

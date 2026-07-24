@@ -11,7 +11,7 @@
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Folha de Estilos Principal -->
-    <link rel="stylesheet" href="/frontend/style.css">
+    <link rel="stylesheet" href="/frontend/style.css?v=3">
     <!-- Chart.js para Curvas de Aprendizado -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -138,40 +138,50 @@
                     <div id="result-state-success" class="result-state">
                         <div class="success-layout">
                             <!-- Image Display & Scanning Overlay -->
+                            <!-- Imagem original enviada -->
                             <div class="mri-preview-container">
-                                <img id="preview-image" src="" alt="Exame MRI analisado">
+                                <img
+                                    id="preview-image"
+                                    src=""
+                                    alt="Exame MRI analisado"
+                                >
+
                                 <div class="mri-overlay-grid"></div>
                                 <div class="laser-scanner"></div>
                             </div>
-                            <!-- LIME Explanation Container -->
-                            <div id="lime-container" style="display: none; margin-top: 24px;">
 
-                                <div class="lime-header">
-                                    <h4>
-                                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                                        Explicabilidade do Modelo
-                                    </h4>
+                            <!-- Explicação Grad-CAM -->
+                            <div
+                                id="gradcam-container"
+                                class="gradcam-container"
+                                style="display: none;"
+                            >
+                                <div class="gradcam-header">
+                                    <h3>
+                                        <i class="fa-solid fa-fire"></i>
+                                        Mapa de Atenção Grad-CAM
+                                    </h3>
 
                                     <p>
-                                        As regiões em amarelo foram as que mais contribuíram
-                                        para a classificação produzida pela CNN.
+                                        Visualização experimental das regiões que mais
+                                        influenciaram a decisão do modelo.
                                     </p>
                                 </div>
 
-                                <div class="lime-image-wrapper">
+                                <div class="gradcam-image-wrapper">
                                     <img
-                                        id="lime-image"
+                                        id="gradcam-image"
                                         src=""
-                                        alt="Mapa explicativo gerado pelo LIME"
+                                        alt="Mapa de atenção Grad-CAM"
                                     >
                                 </div>
 
-                                <p class="lime-warning">
-                                    A explicação representa o comportamento do modelo e não indica,
-                                    necessariamente, a localização clínica de uma lesão.
+                                <p class="gradcam-warning">
+                                    O mapa Grad-CAM não representa uma segmentação clínica
+                                    do tumor e pode destacar regiões que não correspondem
+                                    diretamente à lesão.
                                 </p>
-
-                        </div>
+                            </div>
                             <!-- Analysis Details -->
                             <div class="analysis-details">
                                 <div class="metrics-header">
