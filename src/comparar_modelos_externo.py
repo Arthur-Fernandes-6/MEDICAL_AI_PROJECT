@@ -4,7 +4,6 @@ import json
 import cv2
 import numpy as np
 import tensorflow as tf
-
 from sklearn.metrics import (
     accuracy_score,
     precision_score,
