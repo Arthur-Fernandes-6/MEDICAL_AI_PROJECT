@@ -1,20 +1,16 @@
 import os
 import numpy as np
 import tensorflow as tf
-
 from sklearn.model_selection import train_test_split
 from sklearn.utils.class_weight import compute_class_weight
-
 from tensorflow.keras.callbacks import (
     EarlyStopping,
     ReduceLROnPlateau,
     ModelCheckpoint
 )
-
 from dataset_efficientnet import (
     carregar_dataset_efficientnet
 )
-
 from model_efficientnet import (
     criar_modelo_efficientnet
 )
