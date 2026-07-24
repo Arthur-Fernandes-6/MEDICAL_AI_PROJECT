@@ -2,7 +2,6 @@ import os
 import csv
 import shutil
 import numpy as np
-
 from tensorflow.keras.models import load_model
 from sklearn.metrics import (
     accuracy_score,
@@ -10,11 +9,11 @@ from sklearn.metrics import (
     classification_report
 )
 
-from preprocessv1 import preprocessar_imagem
+from preprocessv2 import preprocessar_imagem
 
 
 # Caminho do modelo treinado
-CAMINHO_MODELO = "models/brain_tumor_cnn_v2.keras"
+CAMINHO_MODELO = "models/brain_tumor_efficientnet_cropped_best.keras"
 
 # Caminho da pasta com as imagens externas
 PASTA_EXTERNAL = "externalTest"
