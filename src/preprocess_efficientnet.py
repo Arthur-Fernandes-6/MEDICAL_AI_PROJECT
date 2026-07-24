@@ -20,7 +20,7 @@ def redimensionar_com_padding(imagem, tamanho=224):
         tamanho / altura
     )
 
-    nova_largura = int(largura * escala)
+    nova_largura = int(largura * escala)# Calcula a nova largura mantendo a proporção
     nova_altura = int(altura * escala)
 
     imagem_redimensionada = cv2.resize(
@@ -56,7 +56,7 @@ def preprocessar_imagem_efficientnet(caminho_imagem):
     - pixels entre 0 e 255.
     """
 
-    imagem = cv2.imread(caminho_imagem)
+    imagem = cv2.imread(caminho_imagem)# Carrega a imagem usando OpenCV
 
     if imagem is None:
         print(f"Não foi possível carregar: {caminho_imagem}")
