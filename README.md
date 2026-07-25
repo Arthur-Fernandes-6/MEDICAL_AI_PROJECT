@@ -44,7 +44,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
 ---
 
 ## Resultado da Classificação e  Explicabilidade com LIME
-![Resultado](README/prediction.png)
+![Resultado](README/predction.png)
 
 ---
 
