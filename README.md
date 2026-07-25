@@ -28,7 +28,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
   - Sem Tumor
 - Exibição da probabilidade da previsão
 - Exibição da confiança do modelo
-- Explicabilidade utilizando LIME (XAI)
+- Explicabilidade utilizando gradcam
 - Interface Web intuitiva
 - API REST desenvolvida com FastAPI
 - Containerização utilizando Docker
