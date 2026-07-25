@@ -82,7 +82,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
 - TensorFlow / Keras
 - NumPy
 - Pillow
-- LIME
+- GRADCAM
 - Scikit-image
 
 ## Frontend
