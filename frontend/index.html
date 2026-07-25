@@ -76,29 +76,30 @@
 
                 <!-- Model Specs Panel -->
                 <div class="glass-panel specs-panel">
-                    <h3 class="panel-title-sm"><i class="fa-solid fa-sliders"></i> Ficha Técnica do Modelo CNN</h3>
+                    <h3 class="panel-title-sm"><i class="fa-solid fa-sliders"></i> Ficha Técnica do EfficientNetB0</h3>
                     
                     <div class="specs-grid">
                         <div class="spec-card">
                             <span class="spec-label">Acurácia no conjunto de Teste</span>
-                            <span class="spec-value text-emerald">94.00%</span>
+                            <span class="spec-value text-emerald">91.95%</span>
                         </div>
                         <div class="spec-card">
-                            <span class="spec-label">Loss de Validação</span>
-                            <span class="spec-value text-indigo">0.0901</span>
+                            <span class="spec-label"> AUC </span>
+                            <span class="spec-value text-indigo">97.22%</span>
                         </div>
                     </div>
 
                     <div class="spec-layers">
                         <span class="spec-section-title">Estrutura da Rede Neural</span>
                         <ul class="layers-list">
-                            <li><span class="layer-badge conv">Conv2D</span> 32 filtros, Kernel 3x3, Relu</li>
-                            <li><span class="layer-badge pool">MaxPooling2D</span> Redução espacial 2x2</li>
-                            <li><span class="layer-badge conv">Conv2D</span> 64 filtros, Kernel 3x3, Relu</li>
-                            <li><span class="layer-badge pool">MaxPooling2D</span> Redução espacial 2x2</li>
-                            <li><span class="layer-badge flatten">Flatten</span> Vetorização dos padrões</li>
-                            <li><span class="layer-badge dense">Dense</span> 128 neurônios, Relu, Dropout (50%)</li>
-                            <li><span class="layer-badge output">Dense (Sigmoid)</span> Saída Binária (0 a 1)</li>
+                            <li><span class="layer-badge conv">EfficientNetB0</span> Backbone pré-treinado (ImageNet)</li>
+                            <li><span class="layer-badge pool">Brain Crop</span>Pré-processamento automático</li>
+                            <li><span class="layer-badge conv">GlobalAveragePooling2D</span> Redução espacial </li>
+                            <li><span class="layer-badge dense">BatchNormalization</span> Normalização
+                            </li>
+                            <li><span class="layer-badge dense">Dense</span>256 neurônios (ReLU)</li>
+                            <li><span class="layer-badge pool">Dropout</span> 40%</li>
+                            <li><span class="layer-badge output">Sigmoid</span> Saída Binária (0 a 1)</li>
                         </ul>
                     </div>
                 </div>
