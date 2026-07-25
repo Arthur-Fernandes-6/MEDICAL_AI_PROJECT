@@ -43,7 +43,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
 
 ---
 
-## Resultado da Classificação e  Explicabilidade com LIME
+## Resultado da Classificação e  Explicabilidade com GRADCAM
 ![Resultado](README/predction.png)
 
 ---
@@ -64,7 +64,7 @@ Este projeto foi desenvolvido como trabalho do curso de **Inteligência Artifici
                   │
         ┌─────────┴─────────┐
         ▼                   ▼
- TensorFlow CNN         LIME (XAI)
+ TensorFlow CNN         GRADCAM
         │                   │
         └─────────┬─────────┘
                   ▼
@@ -107,7 +107,7 @@ BRAIN_TUMOR_DETECTION_AI
 │
 ├── api/
 │   ├── main.py
-│   └── lime_explainer.py
+│   └── gradcam_explainer.py
 │
 ├── frontend/
 │   ├── index.html
@@ -116,15 +116,20 @@ BRAIN_TUMOR_DETECTION_AI
 │
 ├── models/
 │   └── brain_tumor_cnn_v2.keras
+|   └── brain_tumor_baseline.keras
+|   └── brain_tumor_cnn.keras
+|   └── brain_tumor_efficientnet_cropped_best.keras
+|   └── brain_tumor_efficientnet_v1.keras
 │
 ├── datasets/
+├── brain_tumor_mri_dataset/
 │
 ├── notebooks/
 │
 ├── README/
 │   ├── home.png
 │   ├── prediction.png
-│   └── lime.png
+│   
 │
 ├── Dockerfile
 ├── requirements.txt
