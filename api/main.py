@@ -2,19 +2,19 @@ import os
 import cv2
 import tempfile
 import numpy as np
-
 from fastapi import (
     FastAPI,
     File,
     UploadFile,
     HTTPException
 )
-
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-
+from api.gradcam_explainer import (
+    gerar_explicacao_gradcam
+)
 from src.preprocess_brain_crop import (
     preprocessar_brain_crop
 )
@@ -363,6 +363,25 @@ async def predict(
         ).reshape(-1)[0]
     )
 
+    try:
+        explicacao_gradcam = gerar_explicacao_gradcam(
+        modelo=modelo,
+        imagem_rgb=imagem_cropped,
+        imagem_modelo=imagem_processada
+    )
+
+        gradcam_imagem = explicacao_gradcam[
+        "imagem_base64"
+        ]
+
+        print("Grad-CAM gerado com sucesso!")
+
+    except Exception as erro_gradcam:
+        print("ERRO AO GERAR GRAD-CAM:")
+        print(erro_gradcam)
+
+        gradcam_imagem = None
+
     limiar = 0.5
 
     if probabilidade_tumor >= limiar:
@@ -383,6 +402,7 @@ async def predict(
         ),
         "limiar": limiar,
         "modelo": "EfficientNetB0 com Brain Crop",
+        "gradcam_imagem": gradcam_imagem,
         "arquivo": arquivo.filename,
         "simulado": False,
         "aviso": (
