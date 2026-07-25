@@ -1,0 +1,29 @@
+AVALIAÇÃO EFFICIENTNET CROPPED
+============================================================
+
+Modelo: models/brain_tumor_efficientnet_cropped_best.keras
+Dataset: brain_tumor_mri_dataset_cropped
+Quantidade de imagens: 1600
+Limiar: 0.5
+
+Accuracy: 0.9762
+Precision: 0.9915
+Recall: 0.9767
+Specificity: 0.9750
+F1-score: 0.9840
+AUC: 0.9976
+
+Matriz de confusão:
+[[ 390   10]
+ [  28 1172]]
+
+Relatório de classificação:
+
+              precision    recall  f1-score   support
+
+   Sem tumor     0.9330    0.9750    0.9535       400
+       Tumor     0.9915    0.9767    0.9840      1200
+
+    accuracy                         0.9762      1600
+   macro avg     0.9623    0.9758    0.9688      1600
+weighted avg     0.9769    0.9762    0.9764      1600
