@@ -208,9 +208,9 @@ Fluxo de processamento:
 
 ---
 
-# 🔍 Inteligência Artificial Explicável (LIME)
+# 🔍 mapa de calor (gradcam)
 
-Para aumentar a interpretabilidade do modelo, o projeto utiliza **LIME**, uma técnica de Inteligência Artificial Explicável (XAI).
+Para aumentar a interpretabilidade do modelo, o projeto utiliza **gradcam**.
 
 O algoritmo destaca visualmente as regiões da imagem que tiveram maior influência na decisão da CNN, permitindo compreender melhor o comportamento do modelo durante a classificação.
 
