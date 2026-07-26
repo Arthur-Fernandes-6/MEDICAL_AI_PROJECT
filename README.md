@@ -203,7 +203,7 @@ Fluxo de processamento:
 2. Pré-processamento.
 3. Classificação pela CNN.
 4. Cálculo das probabilidades.
-5. Geração da explicação utilizando LIME.
+5. Geração da explicação utilizando GRADCAM.
 6. Exibição do resultado ao usuário.
 
 ---
