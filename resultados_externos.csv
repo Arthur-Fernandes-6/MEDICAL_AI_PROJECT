@@ -1,0 +1,144 @@
+﻿arquivo,caminho,tipo,classe_real,classe_prevista,probabilidade_tumor,probabilidade_sem_tumor,confianca,acertou
+image(1).jpg,externalTest\noTumor\image(1).jpg,Sem tumor,Sem tumor,Sem tumor,0.001767,0.998233,0.998233,True
+image(10).jpg,externalTest\noTumor\image(10).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(11).jpg,externalTest\noTumor\image(11).jpg,Sem tumor,Sem tumor,Sem tumor,0.001791,0.998209,0.998209,True
+image(12).jpg,externalTest\noTumor\image(12).jpg,Sem tumor,Sem tumor,Sem tumor,0.001826,0.998174,0.998174,True
+image(13).jpg,externalTest\noTumor\image(13).jpg,Sem tumor,Sem tumor,Sem tumor,0.001641,0.998359,0.998359,True
+image(14).jpg,externalTest\noTumor\image(14).jpg,Sem tumor,Sem tumor,Sem tumor,0.001651,0.998349,0.998349,True
+image(15).jpg,externalTest\noTumor\image(15).jpg,Sem tumor,Sem tumor,Sem tumor,0.001719,0.998281,0.998281,True
+image(16).jpg,externalTest\noTumor\image(16).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(17).jpg,externalTest\noTumor\image(17).jpg,Sem tumor,Sem tumor,Sem tumor,0.001772,0.998228,0.998228,True
+image(18).jpg,externalTest\noTumor\image(18).jpg,Sem tumor,Sem tumor,Sem tumor,0.00182,0.99818,0.99818,True
+image(19).jpg,externalTest\noTumor\image(19).jpg,Sem tumor,Sem tumor,Sem tumor,0.001771,0.998229,0.998229,True
+image(2).jpg,externalTest\noTumor\image(2).jpg,Sem tumor,Sem tumor,Sem tumor,0.00181,0.99819,0.99819,True
+image(20).jpg,externalTest\noTumor\image(20).jpg,Sem tumor,Sem tumor,Sem tumor,0.00181,0.99819,0.99819,True
+image(21).jpg,externalTest\noTumor\image(21).jpg,Sem tumor,Sem tumor,Sem tumor,0.0018,0.9982,0.9982,True
+image(22).jpg,externalTest\noTumor\image(22).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(23).jpg,externalTest\noTumor\image(23).jpg,Sem tumor,Sem tumor,Sem tumor,0.001805,0.998195,0.998195,True
+image(24).jpg,externalTest\noTumor\image(24).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(25).jpg,externalTest\noTumor\image(25).jpg,Sem tumor,Sem tumor,Sem tumor,0.001775,0.998225,0.998225,True
+image(26).jpg,externalTest\noTumor\image(26).jpg,Sem tumor,Sem tumor,Sem tumor,0.00178,0.99822,0.99822,True
+image(27).jpg,externalTest\noTumor\image(27).jpg,Sem tumor,Sem tumor,Sem tumor,0.001809,0.998191,0.998191,True
+image(28).jpg,externalTest\noTumor\image(28).jpg,Sem tumor,Sem tumor,Sem tumor,0.001816,0.998184,0.998184,True
+image(29).jpg,externalTest\noTumor\image(29).jpg,Sem tumor,Sem tumor,Sem tumor,0.001809,0.998191,0.998191,True
+image(3).jpg,externalTest\noTumor\image(3).jpg,Sem tumor,Sem tumor,Sem tumor,0.001733,0.998267,0.998267,True
+image(30).jpg,externalTest\noTumor\image(30).jpg,Sem tumor,Sem tumor,Sem tumor,0.001796,0.998204,0.998204,True
+image(31).jpg,externalTest\noTumor\image(31).jpg,Sem tumor,Sem tumor,Sem tumor,0.001796,0.998204,0.998204,True
+image(32).jpg,externalTest\noTumor\image(32).jpg,Sem tumor,Sem tumor,Sem tumor,0.001704,0.998296,0.998296,True
+image(33).jpg,externalTest\noTumor\image(33).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(34).jpg,externalTest\noTumor\image(34).jpg,Sem tumor,Sem tumor,Sem tumor,0.001821,0.998179,0.998179,True
+image(35).jpg,externalTest\noTumor\image(35).jpg,Sem tumor,Sem tumor,Sem tumor,0.001795,0.998205,0.998205,True
+image(36).jpg,externalTest\noTumor\image(36).jpg,Sem tumor,Sem tumor,Sem tumor,0.001651,0.998349,0.998349,True
+image(37).jpg,externalTest\noTumor\image(37).jpg,Sem tumor,Sem tumor,Sem tumor,0.001765,0.998235,0.998235,True
+image(38).jpg,externalTest\noTumor\image(38).jpg,Sem tumor,Sem tumor,Sem tumor,0.001756,0.998244,0.998244,True
+image(39).jpg,externalTest\noTumor\image(39).jpg,Sem tumor,Sem tumor,Sem tumor,0.001804,0.998196,0.998196,True
+image(4).jpg,externalTest\noTumor\image(4).jpg,Sem tumor,Sem tumor,Sem tumor,0.001792,0.998208,0.998208,True
+image(40).jpg,externalTest\noTumor\image(40).jpg,Sem tumor,Sem tumor,Sem tumor,0.001741,0.998259,0.998259,True
+image(41).jpg,externalTest\noTumor\image(41).jpg,Sem tumor,Sem tumor,Sem tumor,0.001703,0.998297,0.998297,True
+image(42).jpg,externalTest\noTumor\image(42).jpg,Sem tumor,Sem tumor,Sem tumor,0.00177,0.99823,0.99823,True
+image(43).jpg,externalTest\noTumor\image(43).jpg,Sem tumor,Sem tumor,Sem tumor,0.001673,0.998327,0.998327,True
+image(44).jpg,externalTest\noTumor\image(44).jpg,Sem tumor,Sem tumor,Sem tumor,0.001677,0.998323,0.998323,True
+image(45).jpg,externalTest\noTumor\image(45).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(46).jpg,externalTest\noTumor\image(46).jpg,Sem tumor,Sem tumor,Sem tumor,0.001752,0.998248,0.998248,True
+image(47).jpg,externalTest\noTumor\image(47).jpg,Sem tumor,Sem tumor,Sem tumor,0.001813,0.998187,0.998187,True
+image(48).jpg,externalTest\noTumor\image(48).jpg,Sem tumor,Sem tumor,Sem tumor,0.001773,0.998227,0.998227,True
+image(49).jpg,externalTest\noTumor\image(49).jpg,Sem tumor,Sem tumor,Sem tumor,0.001719,0.998281,0.998281,True
+image(5).jpg,externalTest\noTumor\image(5).jpg,Sem tumor,Sem tumor,Sem tumor,0.001788,0.998212,0.998212,True
+image(50).jpg,externalTest\noTumor\image(50).jpg,Sem tumor,Sem tumor,Sem tumor,0.001752,0.998248,0.998248,True
+image(51).jpg,externalTest\noTumor\image(51).jpg,Sem tumor,Sem tumor,Sem tumor,0.001659,0.998341,0.998341,True
+image(52).jpg,externalTest\noTumor\image(52).jpg,Sem tumor,Sem tumor,Sem tumor,0.001703,0.998297,0.998297,True
+image(53).jpg,externalTest\noTumor\image(53).jpg,Sem tumor,Sem tumor,Sem tumor,0.001719,0.998281,0.998281,True
+image(54).jpg,externalTest\noTumor\image(54).jpg,Sem tumor,Sem tumor,Sem tumor,0.001752,0.998248,0.998248,True
+image(55).jpg,externalTest\noTumor\image(55).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(56).jpg,externalTest\noTumor\image(56).jpg,Sem tumor,Sem tumor,Sem tumor,0.001748,0.998252,0.998252,True
+image(57).jpg,externalTest\noTumor\image(57).jpg,Sem tumor,Sem tumor,Sem tumor,0.001648,0.998352,0.998352,True
+image(58).jpg,externalTest\noTumor\image(58).jpg,Sem tumor,Sem tumor,Sem tumor,0.001744,0.998256,0.998256,True
+image(59).jpg,externalTest\noTumor\image(59).jpg,Sem tumor,Sem tumor,Sem tumor,0.001662,0.998338,0.998338,True
+image(6).jpg,externalTest\noTumor\image(6).jpg,Sem tumor,Sem tumor,Sem tumor,0.001803,0.998197,0.998197,True
+image(60).jpg,externalTest\noTumor\image(60).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(61).jpg,externalTest\noTumor\image(61).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(62).jpg,externalTest\noTumor\image(62).jpg,Sem tumor,Sem tumor,Sem tumor,0.001652,0.998348,0.998348,True
+image(63).jpg,externalTest\noTumor\image(63).jpg,Sem tumor,Sem tumor,Sem tumor,0.001816,0.998184,0.998184,True
+image(64).jpg,externalTest\noTumor\image(64).jpg,Sem tumor,Sem tumor,Sem tumor,0.001704,0.998296,0.998296,True
+image(65).jpg,externalTest\noTumor\image(65).jpg,Sem tumor,Sem tumor,Sem tumor,0.001836,0.998164,0.998164,True
+image(66).jpg,externalTest\noTumor\image(66).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(67).jpg,externalTest\noTumor\image(67).jpg,Sem tumor,Sem tumor,Sem tumor,0.001719,0.998281,0.998281,True
+image(68).jpg,externalTest\noTumor\image(68).jpg,Sem tumor,Sem tumor,Sem tumor,0.001796,0.998204,0.998204,True
+image(69).jpg,externalTest\noTumor\image(69).jpg,Sem tumor,Sem tumor,Sem tumor,0.0018,0.9982,0.9982,True
+image(7).jpg,externalTest\noTumor\image(7).jpg,Sem tumor,Sem tumor,Sem tumor,0.001794,0.998206,0.998206,True
+image(70).jpg,externalTest\noTumor\image(70).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(71).jpg,externalTest\noTumor\image(71).jpg,Sem tumor,Sem tumor,Sem tumor,0.001736,0.998264,0.998264,True
+image(72).jpg,externalTest\noTumor\image(72).jpg,Sem tumor,Sem tumor,Sem tumor,0.001809,0.998191,0.998191,True
+image(73).jpg,externalTest\noTumor\image(73).jpg,Sem tumor,Sem tumor,Sem tumor,0.001775,0.998225,0.998225,True
+image(74).jpg,externalTest\noTumor\image(74).jpg,Sem tumor,Sem tumor,Sem tumor,0.001791,0.998209,0.998209,True
+image(75).jpg,externalTest\noTumor\image(75).jpg,Sem tumor,Sem tumor,Sem tumor,0.001773,0.998227,0.998227,True
+image(76).jpg,externalTest\noTumor\image(76).jpg,Sem tumor,Sem tumor,Sem tumor,0.001836,0.998164,0.998164,True
+image(77).jpg,externalTest\noTumor\image(77).jpg,Sem tumor,Sem tumor,Sem tumor,0.001807,0.998193,0.998193,True
+image(78).jpg,externalTest\noTumor\image(78).jpg,Sem tumor,Sem tumor,Sem tumor,0.001797,0.998203,0.998203,True
+image(79).jpg,externalTest\noTumor\image(79).jpg,Sem tumor,Sem tumor,Sem tumor,0.001765,0.998235,0.998235,True
+image(8).jpg,externalTest\noTumor\image(8).jpg,Sem tumor,Sem tumor,Sem tumor,0.001764,0.998236,0.998236,True
+image(80).jpg,externalTest\noTumor\image(80).jpg,Sem tumor,Sem tumor,Sem tumor,0.00181,0.99819,0.99819,True
+image(81).jpg,externalTest\noTumor\image(81).jpg,Sem tumor,Sem tumor,Sem tumor,0.001808,0.998192,0.998192,True
+image(82).jpg,externalTest\noTumor\image(82).jpg,Sem tumor,Sem tumor,Sem tumor,0.001788,0.998212,0.998212,True
+image(83).jpg,externalTest\noTumor\image(83).jpg,Sem tumor,Sem tumor,Sem tumor,0.001704,0.998296,0.998296,True
+image(84).jpg,externalTest\noTumor\image(84).jpg,Sem tumor,Sem tumor,Sem tumor,0.001719,0.998281,0.998281,True
+image(85).jpg,externalTest\noTumor\image(85).jpg,Sem tumor,Sem tumor,Sem tumor,0.001791,0.998209,0.998209,True
+image(86).jpg,externalTest\noTumor\image(86).jpg,Sem tumor,Sem tumor,Sem tumor,0.001767,0.998233,0.998233,True
+image(87).jpg,externalTest\noTumor\image(87).jpg,Sem tumor,Sem tumor,Sem tumor,0.001715,0.998285,0.998285,True
+image(88).jpg,externalTest\noTumor\image(88).jpg,Sem tumor,Sem tumor,Sem tumor,0.001803,0.998197,0.998197,True
+image(89).jpg,externalTest\noTumor\image(89).jpg,Sem tumor,Sem tumor,Sem tumor,0.001635,0.998365,0.998365,True
+image(9).jpg,externalTest\noTumor\image(9).jpg,Sem tumor,Sem tumor,Sem tumor,0.00181,0.99819,0.99819,True
+image(90).jpg,externalTest\noTumor\image(90).jpg,Sem tumor,Sem tumor,Sem tumor,0.001696,0.998304,0.998304,True
+image.jpg,externalTest\noTumor\image.jpg,Sem tumor,Sem tumor,Sem tumor,0.00176,0.99824,0.99824,True
+image(1).jpg,externalTest\yes\glioma\image(1).jpg,Glioma,Tumor,Sem tumor,0.00176,0.99824,0.99824,False
+image(10).jpg,externalTest\yes\glioma\image(10).jpg,Glioma,Tumor,Sem tumor,0.001737,0.998263,0.998263,False
+image(11).jpg,externalTest\yes\glioma\image(11).jpg,Glioma,Tumor,Sem tumor,0.001744,0.998256,0.998256,False
+image(12).jpg,externalTest\yes\glioma\image(12).jpg,Glioma,Tumor,Sem tumor,0.001744,0.998256,0.998256,False
+image(13).jpg,externalTest\yes\glioma\image(13).jpg,Glioma,Tumor,Sem tumor,0.001782,0.998218,0.998218,False
+image(14).jpg,externalTest\yes\glioma\image(14).jpg,Glioma,Tumor,Sem tumor,0.001722,0.998278,0.998278,False
+image(15).jpg,externalTest\yes\glioma\image(15).jpg,Glioma,Tumor,Sem tumor,0.001804,0.998196,0.998196,False
+image(16).jpg,externalTest\yes\glioma\image(16).jpg,Glioma,Tumor,Sem tumor,0.001832,0.998168,0.998168,False
+image(17).jpg,externalTest\yes\glioma\image(17).jpg,Glioma,Tumor,Sem tumor,0.001745,0.998255,0.998255,False
+image(18).jpg,externalTest\yes\glioma\image(18).jpg,Glioma,Tumor,Sem tumor,0.001709,0.998291,0.998291,False
+image(19).jpg,externalTest\yes\glioma\image(19).jpg,Glioma,Tumor,Sem tumor,0.001843,0.998157,0.998157,False
+image(2).jpg,externalTest\yes\glioma\image(2).jpg,Glioma,Tumor,Sem tumor,0.001786,0.998214,0.998214,False
+image(20).jpg,externalTest\yes\glioma\image(20).jpg,Glioma,Tumor,Sem tumor,0.001632,0.998368,0.998368,False
+image(21).jpg,externalTest\yes\glioma\image(21).jpg,Glioma,Tumor,Sem tumor,0.001671,0.998329,0.998329,False
+image(22).jpg,externalTest\yes\glioma\image(22).jpg,Glioma,Tumor,Sem tumor,0.001668,0.998332,0.998332,False
+image(23).jpg,externalTest\yes\glioma\image(23).jpg,Glioma,Tumor,Sem tumor,0.001659,0.998341,0.998341,False
+image(24).jpg,externalTest\yes\glioma\image(24).jpg,Glioma,Tumor,Sem tumor,0.001633,0.998367,0.998367,False
+image(25).jpg,externalTest\yes\glioma\image(25).jpg,Glioma,Tumor,Sem tumor,0.001783,0.998217,0.998217,False
+image(26).jpg,externalTest\yes\glioma\image(26).jpg,Glioma,Tumor,Sem tumor,0.001851,0.998149,0.998149,False
+image(27).jpg,externalTest\yes\glioma\image(27).jpg,Glioma,Tumor,Sem tumor,0.001859,0.998141,0.998141,False
+image(28).jpg,externalTest\yes\glioma\image(28).jpg,Glioma,Tumor,Sem tumor,0.001758,0.998242,0.998242,False
+image(29).jpg,externalTest\yes\glioma\image(29).jpg,Glioma,Tumor,Sem tumor,0.001758,0.998242,0.998242,False
+image(3).jpg,externalTest\yes\glioma\image(3).jpg,Glioma,Tumor,Sem tumor,0.001764,0.998236,0.998236,False
+image(30).jpg,externalTest\yes\glioma\image(30).jpg,Glioma,Tumor,Sem tumor,0.001813,0.998187,0.998187,False
+image(4).jpg,externalTest\yes\glioma\image(4).jpg,Glioma,Tumor,Sem tumor,0.001818,0.998182,0.998182,False
+image(5).jpg,externalTest\yes\glioma\image(5).jpg,Glioma,Tumor,Sem tumor,0.001752,0.998248,0.998248,False
+image(6).jpg,externalTest\yes\glioma\image(6).jpg,Glioma,Tumor,Sem tumor,0.001764,0.998236,0.998236,False
+image(7).jpg,externalTest\yes\glioma\image(7).jpg,Glioma,Tumor,Sem tumor,0.001809,0.998191,0.998191,False
+image(8).jpg,externalTest\yes\glioma\image(8).jpg,Glioma,Tumor,Sem tumor,0.001691,0.998309,0.998309,False
+image(9).jpg,externalTest\yes\glioma\image(9).jpg,Glioma,Tumor,Sem tumor,0.001775,0.998225,0.998225,False
+image.jpg,externalTest\yes\glioma\image.jpg,Glioma,Tumor,Sem tumor,0.00176,0.99824,0.99824,False
+image(1).jpg,externalTest\yes\pituitary\image(1).jpg,Pituitary,Tumor,Sem tumor,0.001754,0.998246,0.998246,False
+image(10).jpg,externalTest\yes\pituitary\image(10).jpg,Pituitary,Tumor,Sem tumor,0.001772,0.998228,0.998228,False
+image(11).jpg,externalTest\yes\pituitary\image(11).jpg,Pituitary,Tumor,Sem tumor,0.001826,0.998174,0.998174,False
+image(13).jpg,externalTest\yes\pituitary\image(13).jpg,Pituitary,Tumor,Sem tumor,0.001849,0.998151,0.998151,False
+image(15).jpg,externalTest\yes\pituitary\image(15).jpg,Pituitary,Tumor,Sem tumor,0.001791,0.998209,0.998209,False
+image(18).jpg,externalTest\yes\pituitary\image(18).jpg,Pituitary,Tumor,Sem tumor,0.00175,0.99825,0.99825,False
+image(19).jpg,externalTest\yes\pituitary\image(19).jpg,Pituitary,Tumor,Sem tumor,0.001803,0.998197,0.998197,False
+image(2).jpg,externalTest\yes\pituitary\image(2).jpg,Pituitary,Tumor,Sem tumor,0.001754,0.998246,0.998246,False
+image(20).jpg,externalTest\yes\pituitary\image(20).jpg,Pituitary,Tumor,Sem tumor,0.001803,0.998197,0.998197,False
+image(21).jpg,externalTest\yes\pituitary\image(21).jpg,Pituitary,Tumor,Sem tumor,0.001803,0.998197,0.998197,False
+image(22).jpg,externalTest\yes\pituitary\image(22).jpg,Pituitary,Tumor,Sem tumor,0.001673,0.998327,0.998327,False
+image(23).jpg,externalTest\yes\pituitary\image(23).jpg,Pituitary,Tumor,Sem tumor,0.001673,0.998327,0.998327,False
+image(27).jpg,externalTest\yes\pituitary\image(27).jpg,Pituitary,Tumor,Sem tumor,0.001733,0.998267,0.998267,False
+image(28).jpg,externalTest\yes\pituitary\image(28).jpg,Pituitary,Tumor,Sem tumor,0.001733,0.998267,0.998267,False
+image(3).jpg,externalTest\yes\pituitary\image(3).jpg,Pituitary,Tumor,Sem tumor,0.001754,0.998246,0.998246,False
+image(30).jpg,externalTest\yes\pituitary\image(30).jpg,Pituitary,Tumor,Sem tumor,0.001804,0.998196,0.998196,False
+image(5).jpg,externalTest\yes\pituitary\image(5).jpg,Pituitary,Tumor,Sem tumor,0.001755,0.998245,0.998245,False
+image(6).jpg,externalTest\yes\pituitary\image(6).jpg,Pituitary,Tumor,Sem tumor,0.001755,0.998245,0.998245,False
+image(7).jpg,externalTest\yes\pituitary\image(7).jpg,Pituitary,Tumor,Sem tumor,0.001788,0.998212,0.998212,False
+image(8).jpg,externalTest\yes\pituitary\image(8).jpg,Pituitary,Tumor,Sem tumor,0.001788,0.998212,0.998212,False
+image.jpg,externalTest\yes\pituitary\image.jpg,Pituitary,Tumor,Sem tumor,0.001799,0.998201,0.998201,False

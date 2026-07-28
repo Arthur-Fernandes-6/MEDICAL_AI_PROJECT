@@ -1,0 +1,17 @@
+{
+    "modelo": "models/brain_tumor_efficientnet_cropped_best.keras",
+    "dataset": "brain_tumor_mri_dataset_cropped",
+    "conjunto": "Testing",
+    "quantidade_imagens": 1600,
+    "limiar": 0.5,
+    "accuracy": 0.97625,
+    "precision": 0.9915397631133672,
+    "recall": 0.9766666666666667,
+    "specificity": 0.975,
+    "f1_score": 0.984047019311503,
+    "auc": 0.9975645833333333,
+    "verdadeiros_negativos": 390,
+    "falsos_positivos": 10,
+    "falsos_negativos": 28,
+    "verdadeiros_positivos": 1172
+}
